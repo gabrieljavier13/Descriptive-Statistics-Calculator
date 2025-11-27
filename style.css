@@ -4,36 +4,37 @@ body {
   color: #333;
   margin: 0;
   padding: 0;
-  /* IMPORTANT: removed flex so fixed position works on mobile */
+  overflow-x: hidden; /* 🔥 Prevent horizontal scroll */
 }
+
 .container {
-  width: 95%;
-  max-width: 1200px;
+  width: 100%; /* 🔥 full responsive */
+  max-width: 100%; /* 🔥 remove 1200px forcing zoom-out */
   background: #ffffff;
-  padding: 30px;
+  padding: 20px;
   border-radius: 16px;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
-  margin: 40px auto;
+  margin: 20px auto;
 }
 
 .title-area {
   background: linear-gradient(135deg, #1e2a38, #2f435b);
   color: #fff;
   text-align: center;
-  padding: 45px 20px;
+  padding: 35px 15px;
   border-radius: 12px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 .site-title {
-  font-size: 48px;
+  font-size: 32px; /* 🔥 made responsive */
   font-weight: 800;
   margin: 0;
   text-transform: uppercase;
 }
 
 .site-subtitle {
-  font-size: 18px;
+  font-size: 16px;
   color: #d0d7e0;
   margin-top: 10px;
 }
@@ -41,14 +42,15 @@ body {
 .description {
   background: #f8f9fc;
   border-left: 5px solid #1e2a38;
-  padding: 25px;
+  padding: 20px;
   border-radius: 10px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   line-height: 1.6;
 }
 
 textarea {
-  width: 97%;
+  width: 100%; /* 🔥 Remove 97% overflow */
+  max-width: 100%;
   height: 90px;
   padding: 12px;
   border: 2px solid #c5cbe3;
@@ -79,15 +81,18 @@ button:hover {
   background: #27384b;
 }
 
+/* ============================= */
+/* 🔥 FIX: Prevent flex overflow */
+/* ============================= */
 .output {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap; /* allow wrap */
   gap: 15px;
   margin-top: 25px;
 }
 
 .result, .steps, .solution {
-  flex: 1;
+  flex: 1 1 100%; /* 🔥 full width on small screens */
   padding: 18px;
   background: #f7f9fc;
   border-radius: 10px;
@@ -95,12 +100,16 @@ button:hover {
   font-size: 15px;
 }
 
+/* ============================= */
+/* 🔥 FIX: History width issues */
+/* ============================= */
 .history {
   position: fixed;
   top: 120px;
-  right: 20px;
-  width: 350px;
-  height: 80%;
+  right: 10px;
+  width: 90%; /* 🔥 from 350px → responsive */
+  max-width: 350px;
+  height: 75%;
   background: #1e2a38;
   color: white;
   border-radius: 12px;
@@ -113,13 +122,6 @@ button:hover {
   display: block;
 }
 
-.history h3 {
-  text-align: center;
-  margin-top: 0;
-  border-bottom: 1px solid rgba(255,255,255,0.3);
-  padding-bottom: 8px;
-}
-
 .history-entry {
   background: rgba(255,255,255,0.1);
   border-radius: 8px;
@@ -127,66 +129,67 @@ button:hover {
   margin: 8px 0;
 }
 
-@media (max-width: 768px) {
-  .output {
-    flex-direction: column;
+/* ====================================================== */
+/* 🔥 Mobile Override — ensures no zoom, no overflow EVER */
+/* ====================================================== */
+@media (max-width: 480px) {
+
+  .site-title {
+    font-size: 26px;
+  }
+
+  .title-area {
+    padding: 30px 10px;
+  }
+
+  .container {
+    padding: 15px;
+    margin: 10px;
+  }
+
+  button {
+    width: 100%; /* nice mobile touch */
+  }
+
+  .history {
+    right: 0;
+    width: 100%; /* full width modal on mobile */
+    border-radius: 0;
+  }
+
+  .result, .steps, .solution {
+    font-size: 14px;
   }
 }
+
 /* --- DARK MODE THEME --- */
 body.dark {
   background: #121212;
   color: #e2e2e2;
 }
 
-body.dark .container {
-  background: #1d1d1d;
-  box-shadow: 0 0 25px rgba(255, 255, 255, 0.05);
-}
-
-body.dark .title-area {
-  background: linear-gradient(135deg, #000, #222);
-}
-
-body.dark .description {
-  background: #1b1b1b;
-  border-left-color: #4a90e2;
-}
-
-body.dark textarea {
-  background: #222;
-  color: white;
-  border-color: #555;
-}
-
-body.dark button {
-  background: #333;
-}
-
-body.dark button:hover {
-  background: #444;
-}
-
+body.dark .container { background: #1d1d1d; box-shadow: 0 0 25px rgba(255, 255, 255, 0.05); }
+body.dark .title-area { background: linear-gradient(135deg, #000, #222); }
+body.dark .description { background: #1b1b1b; border-left-color: #4a90e2; }
+body.dark textarea { background: #222; color: white; border-color: #555; }
+body.dark button { background: #333; }
+body.dark button:hover { background: #444; }
 body.dark .result,
 body.dark .steps,
 body.dark .solution {
   background: #222;
   border-color: #444;
 }
+body.dark .history { background: #0f0f0f; }
 
-body.dark .history {
-  background: #0f0f0f;
-}
-
-/* --- TOGGLE SWITCH STYLE --- */
-/* --- NORMAL SWITCH (hindi fixed, kasama sa body flow) --- */
+/* Toggle switch */
 .theme-toggle {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 10px; /* pwede mo baguhin */
+  margin-bottom: 10px;
 }
 
-/* switch body */
 .switch {
   position: relative;
   display: inline-block;
@@ -194,27 +197,17 @@ body.dark .history {
   height: 24px;
 }
 
-/* hide checkbox */
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
+.switch input { opacity: 0; width: 0; height: 0; }
 
-/* slider background */
 .slider {
   position: absolute;
   cursor: pointer;
   background-color: #ccc;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
   transition: .4s;
   border-radius: 34px;
 }
 
-/* circle */
 .slider:before {
   position: absolute;
   content: "";
@@ -227,22 +220,14 @@ body.dark .history {
   border-radius: 50%;
 }
 
-/* checked color */
-input:checked + .slider {
-  background-color: #4a90e2;
-}
+input:checked + .slider { background-color: #4a90e2; }
+input:checked + .slider:before { transform: translateX(26px); }
 
-input:checked + .slider:before {
-  transform: translateX(26px);
-}
-
-/* smooth transitions */
 body, .container, textarea, button, .result, .steps, .solution {
   transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
-/* ================================
-   FIXED THEME TOGGLE (TOP RIGHT)
-================================ */
+
+/* Fixed toggle */
 .theme-toggle-fixed {
   position: fixed;
   top: 15px;
@@ -252,18 +237,13 @@ body, .container, textarea, button, .result, .steps, .solution {
   align-items: center;
 }
 
-/* Make label text invisible since removed */
 #modeLabel { display: none; }
 
-/* ================================
-   HISTORY MODAL (Overhaul)
-================================ */
+/* History modal override */
 .history-modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   background: rgba(0,0,0,0.65);
   display: none;
   justify-content: center;

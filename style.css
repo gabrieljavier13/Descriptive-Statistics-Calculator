@@ -183,7 +183,7 @@ body.dark .history {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 20px; /* pwede mo baguhin */
+  margin-bottom: 10px; /* pwede mo baguhin */
 }
 
 /* switch body */
@@ -239,4 +239,66 @@ input:checked + .slider:before {
 /* smooth transitions */
 body, .container, textarea, button, .result, .steps, .solution {
   transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+/* ================================
+   FIXED THEME TOGGLE (TOP RIGHT)
+================================ */
+.theme-toggle-fixed {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+}
+
+/* Make label text invisible since removed */
+#modeLabel { display: none; }
+
+/* ================================
+   HISTORY MODAL (Overhaul)
+================================ */
+.history-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.65);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: fadeIn 0.2s ease;
+}
+
+.history-modal.visible {
+  display: flex;
+}
+
+.history-content {
+  width: 90%;
+  max-width: 420px;
+  max-height: 85%;
+  background: #1e2a38;
+  color: white;
+  border-radius: 15px;
+  padding: 18px;
+  overflow-y: auto;
+  position: relative;
+}
+
+.close-history {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }

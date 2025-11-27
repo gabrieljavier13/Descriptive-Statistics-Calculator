@@ -8,19 +8,23 @@
 </head>
 <body>
 
-  <!-- 🌙 LIGHT/DARK TOGGLE BUTTON -->
-  <div class="theme-toggle">
+  <!-- 🌙 FIXED THEME TOGGLE (TOP RIGHT) -->
+  <div class="theme-toggle-fixed">
     <label class="switch">
       <input type="checkbox" id="themeSwitch">
       <span class="slider"></span>
     </label>
-    <span id="modeLabel">Light Mode</span>
   </div>
 
   <div class="container">
-    <div class="history" id="history">
-      <h3>Calculation History</h3>
-      <div id="historyList"></div>
+
+    <!-- 📘 HISTORY MODAL -->
+    <div class="history-modal" id="history">
+      <div class="history-content">
+        <span class="close-history" onclick="toggleHistory()">×</span>
+        <h3>Calculation History</h3>
+        <div id="historyList"></div>
+      </div>
     </div>
 
     <div class="title-area">

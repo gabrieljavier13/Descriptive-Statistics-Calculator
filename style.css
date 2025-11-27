@@ -2,6 +2,7 @@ body {
   font-family: 'Helvetica', sans-serif;
   background: #f4f6f8;
   color: #333;
+  width: 92%;
   margin: 0;
   padding: 0;
   /* IMPORTANT: removed flex so fixed position works on mobile */
@@ -375,3 +376,4 @@ html, body {
     font-size: 14px !important;
   }
 }
+

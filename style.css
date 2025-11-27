@@ -364,3 +364,14 @@ html, body {
 .history-content {
   width: 92%; /* mas sakto on all phones */
 }
+/* Prevent title from being "too large" on mobile */
+@media (max-width: 600px) {
+  .site-title {
+    font-size: 32px !important;
+    line-height: 1.2;
+  }
+
+  .site-subtitle {
+    font-size: 14px !important;
+  }
+}

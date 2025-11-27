@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Descriptive Statistics Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 🌙 LIGHT/DARK TOGGLE BUTTON -->
+  <div class="theme-toggle">
+    <label class="switch">
+      <input type="checkbox" id="themeSwitch">
+      <span class="slider"></span>
+    </label>
+    <span id="modeLabel">Light Mode</span>
+  </div>
+
+  <div class="container">
+    <div class="history" id="history">
+      <h3>Calculation History</h3>
+      <div id="historyList"></div>
+    </div>
+
+    <div class="title-area">
+      <h1 class="site-title">Descriptive Statistics Calculator</h1>
+      <p class="site-subtitle">A fast and reliable calculator for students</p>
+    </div>
+
+    <div class="description">
+      <p><b>Welcome!</b> This calculator helps you compute <b>Mean</b>, <b>Median</b>, <b>Mode</b>, <b>Range</b>, <b>Variance</b>, and <b>Standard Deviation</b>.</p>
+      <ul>
+        <li><b>Measures of Central Tendency:</b> Mean, Median, Mode.</li>
+        <li><b>Measures of Dispersion:</b> Range, Variance, Standard Deviation.</li>
+      </ul>
+    </div>
+
+    <textarea id="dataInput" placeholder="Enter data e.g. 10, 20, 30, 40, 50"></textarea>
+
+    <div class="option">
+      <label><input type="checkbox" id="population" checked> Population</label>
+      <label><input type="checkbox" id="sample"> Sample</label>
+    </div>
+
+    <div style="text-align:center;">
+      <button onclick="computeAll()">Compute All</button>
+      <button onclick="clearAll()">Clear</button>
+      <button onclick="toggleHistory()">History</button>
+    </div>
+
+    <div class="output">
+      <div class="result" id="result"><h3>Results</h3></div>
+      <div class="steps" id="steps"><h3>Steps</h3></div>
+      <div class="solution" id="solution"><h3>Solution</h3></div>
+    </div>
+
+    <footer style="text-align:center; margin-top:20px;">
+      Descriptive Statistics Calculator | Developed by Samiano and company
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

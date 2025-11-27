@@ -1,0 +1,248 @@
+body {
+  font-family: 'Helvetica', sans-serif;
+  background: #f4f6f8;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.container {
+  width: 95%;
+  max-width: 1200px;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+.title-area {
+  background: linear-gradient(135deg, #1e2a38, #2f435b);
+  color: #fff;
+  text-align: center;
+  padding: 45px 20px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+
+.site-title {
+  font-size: 48px;
+  font-weight: 800;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.site-subtitle {
+  font-size: 18px;
+  color: #d0d7e0;
+  margin-top: 10px;
+}
+
+.description {
+  background: #f8f9fc;
+  border-left: 5px solid #1e2a38;
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+textarea {
+  width: 97%;
+  height: 90px;
+  padding: 12px;
+  border: 2px solid #c5cbe3;
+  border-radius: 8px;
+  background-color: #f9fafc;
+  margin-bottom: 20px;
+  resize: none;
+}
+
+.option {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+button {
+  background: #1e2a38;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-weight: bold;
+  margin: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #27384b;
+}
+
+.output {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.result, .steps, .solution {
+  flex: 1;
+  padding: 18px;
+  background: #f7f9fc;
+  border-radius: 10px;
+  border: 1px solid #e0e4ed;
+  font-size: 15px;
+}
+
+.history {
+  position: fixed;
+  top: 120px;
+  right: 20px;
+  width: 350px;
+  height: 80%;
+  background: #1e2a38;
+  color: white;
+  border-radius: 12px;
+  padding: 15px;
+  overflow-y: auto;
+  display: none;
+}
+
+.history.visible {
+  display: block;
+}
+
+.history h3 {
+  text-align: center;
+  margin-top: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  padding-bottom: 8px;
+}
+
+.history-entry {
+  background: rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 8px;
+  margin: 8px 0;
+}
+
+@media (max-width: 768px) {
+  .output {
+    flex-direction: column;
+  }
+}
+/* --- DARK MODE THEME --- */
+body.dark {
+  background: #121212;
+  color: #e2e2e2;
+}
+
+body.dark .container {
+  background: #1d1d1d;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.05);
+}
+
+body.dark .title-area {
+  background: linear-gradient(135deg, #000, #222);
+}
+
+body.dark .description {
+  background: #1b1b1b;
+  border-left-color: #4a90e2;
+}
+
+body.dark textarea {
+  background: #222;
+  color: white;
+  border-color: #555;
+}
+
+body.dark button {
+  background: #333;
+}
+
+body.dark button:hover {
+  background: #444;
+}
+
+body.dark .result,
+body.dark .steps,
+body.dark .solution {
+  background: #222;
+  border-color: #444;
+}
+
+body.dark .history {
+  background: #0f0f0f;
+}
+
+/* --- TOGGLE SWITCH STYLE --- */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 999;
+  font-weight: bold;
+}
+
+/* switch body */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+/* hide checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+/* circle */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+/* checked */
+input:checked + .slider {
+  background-color: #4a90e2;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* smooth transitions */
+body, .container, textarea, button, .result, .steps, .solution {
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}

@@ -64,6 +64,17 @@ function showError(message) {
 function displayResults(nums, type, stats) {
   const { m, med, mo, r, v, sd } = stats;
 
+  const n = nums.length;
+  const sum = nums.reduce((a, b) => a + b, 0);
+  const sorted = [...nums].sort((a, b) => a - b);
+  const meanValue = Number(m);
+
+  // Step-by-step variance
+  const squaredSteps = nums.map(x => `${x} - ${meanValue} = ${(x - meanValue).toFixed(2)}, squared = ${((x - meanValue) ** 2).toFixed(2)}`);
+  const squaredValues = nums.map(x => (x - meanValue) ** 2);
+  const sumSquared = squaredValues.reduce((a,b) => a + b, 0).toFixed(2);
+  const divisor = type === "sample" ? `${n} - 1 = ${n - 1}` : `${n}`;
+
   resBox.innerHTML = `
     <h3>Results</h3>
     <p><b>Mean:</b> ${m}</p>
@@ -76,20 +87,50 @@ function displayResults(nums, type, stats) {
 
   stepsBox.innerHTML = `
     <h3>Steps</h3>
-    <p><b>Data:</b> [${nums.join(', ')}]</p>
-    <p><b>Mean:</b> Sum ÷ N</p>
-    <p><b>Variance:</b> ${type === 'sample' ? "Σ(x–x̄)² / (n–1)" : "Σ(x–x̄)² / n"}</p>
-    <p><b>Std Dev:</b> √Variance</p>
+    <p><b>Data:</b> [${nums.join(", ")}]</p>
+    <p><b>Sorted:</b> [${sorted.join(", ")}]</p>
+    <p><b>Mean formula:</b> Sum ÷ N</p>
+    <p><b>Variance formula:</b> Σ(x - mean)² ÷ ${type === "sample" ? "(n - 1)" : "n"}</p>
+    <p><b>Standard Deviation:</b> √Variance</p>
   `;
 
   solBox.innerHTML = `
-    <h3>Solution</h3>
-    <p><b>Mean:</b> Average of data values.</p>
-    <p><b>Median:</b> Middle value when sorted.</p>
-    <p><b>Mode:</b> Most frequent number(s).</p>
-    <p><b>Range:</b> Highest minus lowest.</p>
-    <p><b>Variance:</b> Spread of data around mean.</p>
-    <p><b>Standard Deviation:</b> How far values deviate from mean.</p>
+    <h3>Solution (Detailed)</h3>
+
+    <p><b>1. MEAN</b></p>
+    <p>Sum = ${nums.join(" + ")} = ${sum}</p>
+    <p>Mean = Sum ÷ N = ${sum} ÷ ${n} = <b>${m}</b></p>
+
+    <hr>
+
+    <p><b>2. MEDIAN</b></p>
+    <p>Sorted Data = [${sorted.join(", ")}]</p>
+    <p>Median = <b>${med}</b></p>
+
+    <hr>
+
+    <p><b>3. MODE</b></p>
+    <p>Mode = <b>${mo}</b></p>
+
+    <hr>
+
+    <p><b>4. RANGE</b></p>
+    <p>Range = Highest – Lowest = ${Math.max(...nums)} – ${Math.min(...nums)} = <b>${r}</b></p>
+
+    <hr>
+
+    <p><b>5. VARIANCE (${type})</b></p>
+    <p>Mean = ${meanValue}</p>
+    <p><b>Compute (x – mean)²:</b></p>
+    <p>${squaredSteps.join("<br>")}</p>
+    <p>Σ(x - mean)² = <b>${sumSquared}</b></p>
+    <p>Divisor = ${divisor}</p>
+    <p>Variance = ${sumSquared} ÷ ${type === "sample" ? (n - 1) : n} = <b>${v}</b></p>
+
+    <hr>
+
+    <p><b>6. STANDARD DEVIATION</b></p>
+    <p>SD = √Variance = √${v} = <b>${sd}</b></p>
   `;
 }
 

@@ -200,10 +200,11 @@ body.dark .history {
 
 /* switch body */
 .switch {
-  position: relative;
+  position: fixed;
   display: inline-block;
   width: 50px;
   height: 24px;
+  
 }
 
 /* hide checkbox */
@@ -252,5 +253,6 @@ input:checked + .slider:before {
 body, .container, textarea, button, .result, .steps, .solution {
   transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
+
 
 

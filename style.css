@@ -204,6 +204,7 @@ body.dark .history {
   display: inline-block;
   width: 50px;
   height: 24px;
+  z-index: 9999
   
 }
 
@@ -216,7 +217,7 @@ body.dark .history {
 
 /* slider */
 .slider {
-  position: absolute;
+  position: fixed;
   cursor: pointer;
   background-color: #ccc;
   top: 0;
@@ -229,7 +230,7 @@ body.dark .history {
 
 /* circle */
 .slider:before {
-  position: absolute;
+  position: fixed;
   content: "";
   height: 18px;
   width: 18px;
@@ -253,6 +254,7 @@ input:checked + .slider:before {
 body, .container, textarea, button, .result, .steps, .solution {
   transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
+
 
 
 

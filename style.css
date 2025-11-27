@@ -190,13 +190,6 @@ body.dark .history {
   gap: 10px;
   z-index: 9999; /* para laging nasa ibabaw */
 }
-@media (max-width: 480px) {
-  .theme-toggle {
-    top: 10px;
-    right: 10px;
-    transform: scale(0.9); /* medyo liitan para di sumakop ng space */
-  }
-}
 
 /* switch body */
 .switch {
@@ -254,6 +247,7 @@ input:checked + .slider:before {
 body, .container, textarea, button, .result, .steps, .solution {
   transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
+
 
 
 

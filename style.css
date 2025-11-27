@@ -4,10 +4,7 @@ body {
   color: #333;
   margin: 0;
   padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+  /* IMPORTANT: removed flex so fixed position works on mobile */
 }
 .container {
   width: 95%;
@@ -16,7 +13,7 @@ body {
   padding: 30px;
   border-radius: 16px;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
-  position: relative;
+  margin: 40px auto;
 }
 
 .title-area {
@@ -181,23 +178,13 @@ body.dark .history {
 }
 
 /* --- TOGGLE SWITCH STYLE --- */
+/* --- NORMAL SWITCH (hindi fixed, kasama sa body flow) --- */
 .theme-toggle {
-  position: fixed;
-  top: 15px;
-  right: 15px;
   display: flex;
   align-items: center;
   gap: 10px;
-  z-index: 9999; /* para laging nasa ibabaw */
+  margin-bottom: 20px; /* pwede mo baguhin */
 }
-@media (max-width: 480px) {
-  .theme-toggle {
-    top: 10px;
-    right: 10px;
-    transform: scale(0.9); /* medyo liitan para di sumakop ng space */
-  }
-}
-
 
 /* switch body */
 .switch {
@@ -214,7 +201,7 @@ body.dark .history {
   height: 0;
 }
 
-/* slider */
+/* slider background */
 .slider {
   position: absolute;
   cursor: pointer;
@@ -240,7 +227,7 @@ body.dark .history {
   border-radius: 50%;
 }
 
-/* checked */
+/* checked color */
 input:checked + .slider {
   background-color: #4a90e2;
 }
